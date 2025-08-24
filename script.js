@@ -48,9 +48,9 @@ function rendersongs(value) {
   for (let i = 0; i < songslength; i++) {
     console.log(songslength); //how many songs in the playlist
 
-    let songurl = songdata.playlists[value].songs[0].file;
-    let songtitle = songdata.playlists[value].songs[0].title;
-    let cover = songdata.playlists[value].songs[0].cover;
+    let songurl = songdata.playlists[value].songs[i].file;
+    let songtitle = songdata.playlists[value].songs[i].title;
+    let cover = songdata.playlists[value].songs[i].cover;
 
     let wrapper = `<div class="m1">
     <div class="cont-m1">

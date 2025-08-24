@@ -65,6 +65,16 @@ body {
   border-radius: 8px;
 }
 
+.content-2{
+  height: 420px;
+   overflow-y: auto;
+  overflow-x: hidden;
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: rgb(251, 215, 255) transparent;
+}
+
 .cont-1:hover {
   background-color: rgb(193, 190, 190);
   font-size: 1.5rem;
@@ -103,15 +113,15 @@ body {
   width: 56vw;
   align-items: center;
   margin: 10px 0px 0px 15px;
-  background-color: rgb(51, 50, 50);
   border-radius: 8px;
+
 }
 
 .nav {
   height: 51px;
   width: 100%;
   border-radius: 8px;
-  background-color: rgb(76, 75, 75);
+  background-color: rgb(245, 196, 247);
 }
 
 .mid > h3 {
@@ -130,13 +140,15 @@ body {
   justify-content: space-evenly;
   gap: 20px;
   flex-wrap: wrap;
+    border: 1px solid gray;
+    border-radius: 8px;
 }
 
 .cards {
   margin: 20px 0px 0px 0px;
   height: 200px;
   width: 160px;
-  background-color: rgb(76, 75, 75);
+  border: 1px solid gray;
   cursor: pointer;
 }
 
@@ -189,4 +201,25 @@ body {
   right: 8px;
   margin-right: 6px;
   cursor: pointer;
+}
+
+
+/* Chrome, Edge, Safari */
+.container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.container::-webkit-scrollbar-track {
+  background: #f5e6f5;
+  border-radius: 10px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: hotpink;
+  border-radius: 10px;
+  border: 2px solid #f5e6f5;
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+  background-color: deeppink;
 }

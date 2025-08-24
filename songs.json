@@ -7,7 +7,7 @@
       "songs": [
         {
           "id": 1,
-          "title": "Shaky",
+          "title": "Shaky - Sanju Rathod",
           "artist": "Sanju Rathod",
           "duration": "2:45",
           "file": "songs/SanjuRathod/Shaky - Sanju Rathod 128 Kbps.mp3",
@@ -22,18 +22,82 @@
       "songs": [
         {
           "id": 1,
-          "title": "How you like that- BlackPink",
+          "title": "Pink Venom- BlackPink",
           "artist": "BlackPink",
           "duration": "3:00",
           "file": "songs/Blackpink/BLACKPINK - Pink Venom M_V - BLACKPINK.mp3",
-          "cover": "songs/Blackpink/hylt cover.jpg"
+          "cover": "songs/Blackpink/pink venom cover.jpg"
         },
         {
           "id": 1,
           "title": "How you like that- BlackPink",
           "artist": "BlackPink",
           "duration": "3:00",
+          "file": "songs/Blackpink/BLACKPINK - 'How You Like That' DANCE PERFORMANCE VIDEO - BLACKPINK.mp3",
+          "cover": "songs/Blackpink/hylt cover.jpg"
+        },
+        {
+          "id": 1,
+          "title": "Pink Venom- BlackPink",
+          "artist": "BlackPink",
+          "duration": "3:00",
           "file": "songs/Blackpink/BLACKPINK - Pink Venom M_V - BLACKPINK.mp3",
+          "cover": "songs/Blackpink/pink venom cover.jpg"
+        },
+        {
+          "id": 1,
+          "title": "How you like that- BlackPink",
+          "artist": "BlackPink",
+          "duration": "3:00",
+          "file": "songs/Blackpink/BLACKPINK - 'How You Like That' DANCE PERFORMANCE VIDEO - BLACKPINK.mp3",
+          "cover": "songs/Blackpink/hylt cover.jpg"
+        },
+        {
+          "id": 1,
+          "title": "Pink Venom- BlackPink",
+          "artist": "BlackPink",
+          "duration": "3:00",
+          "file": "songs/Blackpink/BLACKPINK - Pink Venom M_V - BLACKPINK.mp3",
+          "cover": "songs/Blackpink/pink venom cover.jpg"
+        },
+        {
+          "id": 1,
+          "title": "How you like that- BlackPink",
+          "artist": "BlackPink",
+          "duration": "3:00",
+          "file": "songs/Blackpink/BLACKPINK - 'How You Like That' DANCE PERFORMANCE VIDEO - BLACKPINK.mp3",
+          "cover": "songs/Blackpink/hylt cover.jpg"
+        },
+        {
+          "id": 1,
+          "title": "Pink Venom- BlackPink",
+          "artist": "BlackPink",
+          "duration": "3:00",
+          "file": "songs/Blackpink/BLACKPINK - Pink Venom M_V - BLACKPINK.mp3",
+          "cover": "songs/Blackpink/pink venom cover.jpg"
+        },
+        {
+          "id": 1,
+          "title": "How you like that- BlackPink",
+          "artist": "BlackPink",
+          "duration": "3:00",
+          "file": "songs/Blackpink/BLACKPINK - 'How You Like That' DANCE PERFORMANCE VIDEO - BLACKPINK.mp3",
+          "cover": "songs/Blackpink/hylt cover.jpg"
+        },
+        {
+          "id": 1,
+          "title": "Pink Venom- BlackPink",
+          "artist": "BlackPink",
+          "duration": "3:00",
+          "file": "songs/Blackpink/BLACKPINK - Pink Venom M_V - BLACKPINK.mp3",
+          "cover": "songs/Blackpink/pink venom cover.jpg"
+        },
+        {
+          "id": 1,
+          "title": "How you like that- BlackPink",
+          "artist": "BlackPink",
+          "duration": "3:00",
+          "file": "songs/Blackpink/BLACKPINK - 'How You Like That' DANCE PERFORMANCE VIDEO - BLACKPINK.mp3",
           "cover": "songs/Blackpink/hylt cover.jpg"
         }
       ]
