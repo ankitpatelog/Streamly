@@ -1,0 +1,42 @@
+{
+  "playlists": [
+    {
+      "index" : "0",
+      "name" : "Sanju Rathod",
+      "artistcover" : "songs/SanjuRathod/sanju cover.webp",
+      "songs": [
+        {
+          "id": 1,
+          "title": "Shaky",
+          "artist": "Sanju Rathod",
+          "duration": "2:45",
+          "file": "songs/SanjuRathod/Shaky - Sanju Rathod 128 Kbps.mp3",
+          "cover": "songs/SanjuRathod/Shaky cover.jpg"
+        }
+      ]
+    },
+    {
+      "index" : "1",
+      "name": "BlackPink",
+      "artistcover" : "songs/Blackpink/blackpink cover.jpg",
+      "songs": [
+        {
+          "id": 1,
+          "title": "How you like that- BlackPink",
+          "artist": "BlackPink",
+          "duration": "3:00",
+          "file": "songs/Blackpink/BLACKPINK - Pink Venom M_V - BLACKPINK.mp3",
+          "cover": "songs/Blackpink/hylt cover.jpg"
+        },
+        {
+          "id": 1,
+          "title": "How you like that- BlackPink",
+          "artist": "BlackPink",
+          "duration": "3:00",
+          "file": "songs/Blackpink/BLACKPINK - Pink Venom M_V - BLACKPINK.mp3",
+          "cover": "songs/Blackpink/hylt cover.jpg"
+        }
+      ]
+    }
+  ]
+}

@@ -7,7 +7,11 @@
 }
 
 body {
-  background-color: black;
+  background-image: url("/016\ Deep\ Blue.png");
+}
+
+.main {
+  display: flex;
 }
 
 .left {
@@ -23,7 +27,7 @@ body {
 }
 
 .name {
-  color: white;
+  color: rgb(78, 78, 78);
 }
 
 .box-1 {
@@ -32,7 +36,6 @@ body {
   align-items: center;
   margin: 10px 0px 0px 15px;
   gap: 30px;
-  background-color: rgb(51, 50, 50);
   border-radius: 8px;
   padding-left: 10px;
   padding-top: 4px;
@@ -41,43 +44,41 @@ body {
   display: flex;
   flex-direction: column;
   margin: 10px 0px 0px 15px;
-  gap: 20px;
-  background-color: rgb(51, 50, 50);
+  gap: 7px;
   border-radius: 8px;
-  padding-left: 10px;
   height: auto;
-  
 }
 
 .name {
   font-family: "Montserrat", sans-serif;
   font-size: 30px;
+  
   font-weight: 400;
 }
-.cont-1{
-    padding: 5px;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    gap: 9px;
-    cursor: pointer;
-    border-radius: 8px;
+.cont-1 {
+  padding: 5px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+  border-radius: 8px;
 }
 
-.cont-1:hover{
-    background-color: rgb(71, 71, 71);
-    font-size: 1.5rem;
+.cont-1:hover {
+  background-color: rgb(193, 190, 190);
+  font-size: 1.5rem;
 }
 
 .cont-1 > img {
-    height: 25px;
-    width: 25px;
-    filter: invert();
+  height: 25px;
+  width: 25px;
+  filter: invert();
 }
 
-.maker{
-    height: 27px;
-    width: 27px;
+.maker {
+  height: 27px;
+  width: 27px;
 }
 
 .navigation {
@@ -88,3 +89,104 @@ body {
   font-weight: 500;
 }
 
+.musiclist {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0px 0px 15px;
+  gap: 7px;
+  border-radius: 8px;
+  height: 400px;
+}
+
+.mid {
+  height: 600px;
+  width: 56vw;
+  align-items: center;
+  margin: 10px 0px 0px 15px;
+  background-color: rgb(51, 50, 50);
+  border-radius: 8px;
+}
+
+.nav {
+  height: 51px;
+  width: 100%;
+  border-radius: 8px;
+  background-color: rgb(76, 75, 75);
+}
+
+.mid > h3 {
+  color: white;
+  font-size: 37px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  padding: 5px 0px 0px 20px;
+}
+
+.cont-card {
+  width: 95%;
+  margin: 15px auto;
+  height: 400px;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cards {
+  margin: 20px 0px 0px 0px;
+  height: 200px;
+  width: 160px;
+  background-color: rgb(76, 75, 75);
+  cursor: pointer;
+}
+
+.cards > .cover > img {
+  height: 50%;
+  width: 95%;
+  padding-top: 7px;
+  padding-left: 7px;
+}
+
+.song-info {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  font-size-adjust: calc(100% - 30%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.m1{
+  border: 1px solid gray;
+  position: relative;
+  display: flex;
+  gap: 27px;
+  align-items: center;
+  border-radius: 6px;
+
+}
+
+.cont-m1 > img{
+  height: 55px;
+  width: 55px;
+  padding: 4px;
+  border-radius: 8px;
+  padding-left: 4px;
+}
+
+.cont-m2{
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+
+}
+
+.cont-m3 > img {
+  position: absolute;
+  bottom: 10px;
+  right: 8px;
+  margin-right: 6px;
+  cursor: pointer;
+}
