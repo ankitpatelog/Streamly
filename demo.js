@@ -2,8 +2,8 @@ let countplaylist; // number of playlists
 let songdata;
 
 let currentPlaylist = 0;   // 🔑 keep track of which playlist is open
-let song = [];             // only songs of current playlist
-let currentidx = -1;
+let song = [];             
+let currentidx = null;
 
 // fetch playlists and render
 async function displayplaylist() {
@@ -62,24 +62,123 @@ function rendersongs(value) {
       </div>
     </div>`;
 
-    sidesongs.innerHTML += wrapper;
+    sidesongs.innerHTML = sidesongs.innerHTML + wrapper;
   }
 }
 
-// one global audio element
+// one global audio element stores current palying song 
 let audio = new Audio();
 
 // listen for clicks on play buttons
 document.addEventListener("click", function (e) {
   if (e.target.classList.contains("playbtn")) {
-    let index = parseInt(e.target.dataset.no, 10); // local index inside playlist
-    currentidx = index;
 
-    audio.src = song[index];   // ✅ only uses current playlist songs
+    let index = parseInt(e.target.dataset.no, 10);
+
+    // 🎵 If same song clicked
+    if (currentidx === index) {
+      if (audio.paused) {
+        audio.play(); //  resume from paused position
+        e.target.src = "/svg/pause.svg";
+        document.querySelector(".play123").src = "/svg/pause.svg";
+      } else {
+        audio.pause(); //  pause but keep currentTime
+        e.target.src = "/svg/play.svg";
+        document.querySelector(".play123").src = "/svg/play.svg";
+      }
+      return; // 🔑 stop here so it won’t reset src
+    }
+
+    // 🎵 Different song → load from start
+    currentidx = index;
+    audio.src = song[index];
     audio.play();
 
-    console.log(`▶️ Playing from playlist ${currentPlaylist}, song index ${index}:`, song[index]);
+    // Reset all playlist buttons
+    document.querySelectorAll(".playbtn").forEach(btn => {
+      btn.src = "/svg/play.svg";
+    });
+
+    // Set clicked button + playbar to pause icon
+    e.target.src = "/svg/pause.svg";
+    document.querySelector(".play123").src = "/svg/pause.svg";
   }
+});
+
+
+// playbar button
+let playbarBtn = document.querySelector(".play123");
+playbarBtn.addEventListener("click", () => {
+  if (!currentidx && currentidx !== 0) return; // no song chosen yet
+
+  if (audio.paused) {
+    audio.play();
+    playbarBtn.src = "/svg/pause.svg";
+
+    // also update the playlist button for current song
+    let btn = document.querySelector(`.playbtn[data-no="${currentidx}"]`);
+    if (btn) btn.src = "/svg/pause.svg";
+
+  } else {
+    audio.pause();
+    playbarBtn.src = "/svg/play.svg";
+
+    // also update the playlist button for current song
+    let btn = document.querySelector(`.playbtn[data-no="${currentidx}"]`);
+    if (btn) btn.src = "/svg/play.svg";
+  }
+});
+
+// previous button
+let prevbtn = document.querySelector(".prevbtn"); // make sure your HTML has class="prevbtn"
+prevbtn.addEventListener("click", () => {
+  if (currentidx == null) return; // no song selected yet
+
+  // go to previous index (loop if needed)
+  let previdx = (currentidx - 1 + song.length) % song.length;
+  currentidx = previdx;
+
+  // change source and play
+  audio.src = song[previdx];
+  audio.play();
+
+  // reset all playlist buttons to play
+  document.querySelectorAll(".playbtn").forEach(btn => {
+    btn.src = "/svg/play.svg";
+  });
+
+  // update the new active playlist button
+  let btn = document.querySelector(`.playbtn[data-no="${previdx}"]`);
+  if (btn) btn.src = "/svg/pause.svg";
+
+  // update playbar
+  document.querySelector(".play123").src = "/svg/pause.svg";
+});
+
+// next button
+let nextbtn = document.querySelector(".nextbtn"); // make sure your HTML has class="nextbtn"
+nextbtn.addEventListener("click", () => {
+  if (currentidx == null) return; // no song selected yet
+
+  // go to next index (loop if needed)
+  let nextidx = (currentidx + 1) % song.length;
+  currentidx = nextidx;
+
+  // change source and play
+  audio.src = song[nextidx];
+  audio.play();
+
+  // reset all playlist buttons to play
+  document.querySelectorAll(".playbtn").forEach(btn => {
+    btn.src = "/svg/play.svg";
+  });
+
+  // update the new active playlist button
+  let btn = document.querySelector(`.playbtn[data-no="${nextidx}"]`);
+  if (btn) btn.src = "/svg/pause.svg";
+
+  // update playbar
+  document.querySelector(".play123").src = "/svg/pause.svg";
 });
 
 displayplaylist();

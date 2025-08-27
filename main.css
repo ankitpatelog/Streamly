@@ -216,7 +216,7 @@ body {
   border: 2px solid #f5e6f5;
 }
 
-.container::-webkit-scrollbar-thumb:hover {
+.container::-webkit-scrollbar-thumb {
   background-color: rgb(226, 0, 120);
 }
 
@@ -230,13 +230,46 @@ body {
 }
 
 .section-1 {
-  border: 1px solid rgb(167, 74, 74);
   width: 22.2vw;
-  height: 29px;
+  height: 100%;
+}
+
+.section-1 > h3{
+  font-size: 17px;
+  margin-left: 6px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+
+}
+
+.currplay {
+  padding: 2px;
+  margin-top: 1px;
+}
+
+.cp-1 {
+  border: 1px solid black;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cpcoversrc {
+  height: 45px;
+  width: 45px;
+  border-radius: 6px;
+}
+
+.cpartistname {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 17px;
+  font-weight: 300;
 }
 
 .section-2 {
-  border: 1px solid rgb(167, 74, 74);
+  border: 1px solid greenyellow;
   width: 57vw;
   height: 100%;
   display: flex;
@@ -247,7 +280,6 @@ body {
 }
 
 .controller {
-
 }
 .controller > img {
 }
