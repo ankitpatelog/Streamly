@@ -8,8 +8,8 @@
 
 body {
   background-image: url("/deep\ blue\ 011.png");
+  /* background-color: black;  */
 }
-
 .main {
   display: flex;
 }
@@ -67,12 +67,12 @@ body {
 
 .content-2 {
   height: 390px;
-  overflow-y: auto;
+  overflow-y: auto; /* ✅ show scrollbar only if content overflows */
   overflow-x: hidden;
 
-  /* Firefox */
+  /* Firefox custom scrollbar */
   scrollbar-width: thin;
-  scrollbar-color: #a5c8fc transparent;
+  scrollbar-color: gray transparent;
 }
 
 .cont-1:hover {
@@ -200,29 +200,24 @@ body {
   cursor: pointer;
 }
 
-/* Chrome, Edge, Safari */
-.container::-webkit-scrollbar {
-  width: 8px;
+/* Chrome, Edge, Safari custom scrollbar */
+.my-scroll::-webkit-scrollbar {
+  width: 6px; /* scrollbar thickness */
 }
 
-.container::-webkit-scrollbar-track {
-  background: #f5e6f5;
+.my-scroll::-webkit-scrollbar-track {
+  background: transparent; /* invisible track */
+}
+
+.my-scroll::-webkit-scrollbar-thumb {
+  background-color: gray; /* scrollbar color */
   border-radius: 10px;
-}
-
-.container::-webkit-scrollbar-thumb {
-  background-color: hotpink;
-  border-radius: 10px;
-  border: 2px solid #f5e6f5;
-}
-
-.container::-webkit-scrollbar-thumb {
-  background-color: rgb(226, 0, 120);
 }
 
 .playbar {
   display: flex;
   border: 1px solid black;
+  border-bottom: none;
   height: 75px;
   width: 100%;
   position: absolute;
@@ -234,12 +229,11 @@ body {
   height: 100%;
 }
 
-.section-1 > h3{
+.section-1 > h3 {
   font-size: 17px;
   margin-left: 6px;
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
-
 }
 
 .currplay {
@@ -280,6 +274,36 @@ body {
 }
 
 .controller {
+  border: 1px solid red;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center ;
 }
 .controller > img {
+}
+
+.musicbar {
+  width: 100%;
+  height: 30px;
+}
+
+.line {
+  height: 5px;
+  width: 90%;
+  background-color: rgb(255, 255, 255);
+  margin: auto;
+  cursor: pointer;
+}
+
+.dot {
+  height: 15px;
+  width: 15px;
+  background-color: gray;
+  border-radius: 100px;
+  position: relative;
+  bottom: 5px;
+  left: 0px;
+  cursor: pointer;
+  transition: left 0.5s ease;
 }

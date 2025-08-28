@@ -1,8 +1,8 @@
 let countplaylist; // number of playlists
 let songdata;
 
-let currentPlaylist = 0;   // 🔑 keep track of which playlist is open
-let song = [];             
+let currentPlaylist = 0; // 🔑 keep track of which playlist is open
+let song = [];
 let currentidx = null;
 
 // fetch playlists and render
@@ -37,8 +37,8 @@ async function displayplaylist() {
 
 // render songs of one playlist
 function rendersongs(value) {
-  currentPlaylist = value;   // 🔑 update current playlist
-  song = [];                 // reset to only that playlist’s songs
+  currentPlaylist = value; // 🔑 update current playlist
+  song = []; // reset to only that playlist’s songs
 
   let sidesongs = document.querySelector(".musiclist");
   sidesongs.innerHTML = "";
@@ -50,7 +50,7 @@ function rendersongs(value) {
     let songtitle = songdata.playlists[value].songs[i].title;
     let cover = songdata.playlists[value].songs[i].cover;
 
-    song.push(songurl);  // only push songs of current playlist
+    song.push(songurl); // only push songs of current playlist
 
     let wrapper = `<div class="m1">
       <div class="cont-m1">
@@ -66,19 +66,23 @@ function rendersongs(value) {
   }
 }
 
-// one global audio element stores current palying song 
+// one global audio element stores current palying song
 let audio = new Audio();
 
 // listen for clicks on play buttons
 document.addEventListener("click", function (e) {
   if (e.target.classList.contains("playbtn")) {
-
     let index = parseInt(e.target.dataset.no, 10);
 
     // 🎵 If same song clicked
     if (currentidx === index) {
       if (audio.paused) {
         audio.play(); //  resume from paused position
+        //currenttime
+
+
+
+
         e.target.src = "/svg/pause.svg";
         document.querySelector(".play123").src = "/svg/pause.svg";
       } else {
@@ -95,7 +99,7 @@ document.addEventListener("click", function (e) {
     audio.play();
 
     // Reset all playlist buttons
-    document.querySelectorAll(".playbtn").forEach(btn => {
+    document.querySelectorAll(".playbtn").forEach((btn) => {
       btn.src = "/svg/play.svg";
     });
 
@@ -104,7 +108,6 @@ document.addEventListener("click", function (e) {
     document.querySelector(".play123").src = "/svg/pause.svg";
   }
 });
-
 
 // playbar button
 let playbarBtn = document.querySelector(".play123");
@@ -118,7 +121,6 @@ playbarBtn.addEventListener("click", () => {
     // also update the playlist button for current song
     let btn = document.querySelector(`.playbtn[data-no="${currentidx}"]`);
     if (btn) btn.src = "/svg/pause.svg";
-
   } else {
     audio.pause();
     playbarBtn.src = "/svg/play.svg";
@@ -130,8 +132,8 @@ playbarBtn.addEventListener("click", () => {
 });
 
 // previous button
-let prevbtn = document.querySelector(".prevbtn"); // make sure your HTML has class="prevbtn"
-prevbtn.addEventListener("click", () => {
+  let prevbtn = document.querySelector(".prevbtn"); // make sure your HTML has class="prevbtn"
+  prevbtn.addEventListener("click", () => {
   if (currentidx == null) return; // no song selected yet
 
   // go to previous index (loop if needed)
@@ -143,7 +145,7 @@ prevbtn.addEventListener("click", () => {
   audio.play();
 
   // reset all playlist buttons to play
-  document.querySelectorAll(".playbtn").forEach(btn => {
+  document.querySelectorAll(".playbtn").forEach((btn) => {
     btn.src = "/svg/play.svg";
   });
 
@@ -169,7 +171,7 @@ nextbtn.addEventListener("click", () => {
   audio.play();
 
   // reset all playlist buttons to play
-  document.querySelectorAll(".playbtn").forEach(btn => {
+  document.querySelectorAll(".playbtn").forEach((btn) => {
     btn.src = "/svg/play.svg";
   });
 
@@ -181,4 +183,27 @@ nextbtn.addEventListener("click", () => {
   document.querySelector(".play123").src = "/svg/pause.svg";
 });
 
+//dot movement
+let line = document.querySelector(".line");
+  line.addEventListener("click", (e) => {
+  let dot = document.querySelector(".dot");
+
+  let point = e.offsetX;
+  console.log(point); // click inside .line
+  let actualpoint = point - dot.offsetWidth / 2; // center the dot
+  dot.style.left = actualpoint + "px";
+});
+
+// listen current time
+
+// function gettime(params) {
+//   let btn = document.querySelector(".playbtn")
+//     .addEventListener("click", (e) => {
+      
+//     });
+// }
+if (!audio.paused) {
+        console.log(audio.currentTime);
+        console.log(audio.duration);
+      }
 displayplaylist();
