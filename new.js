@@ -34,6 +34,19 @@ const embeddedData = {
         },
       ],
     },
+    {
+      index: "2",
+      name: "BlackPink",
+      artistcover: "songs/Blackpink/blackpink cover.jpg",
+      songs: [
+        {
+          title: "How you like that- BlackPink",
+          artist: "BlackPink",
+          file: "songs/Blackpink/BLACKPINK - 'How You Like That' DANCE PERFORMANCE VIDEO - BLACKPINK.mp3",
+          cover: "songs/Blackpink/hylt cover.jpg",
+        },
+      ],
+    },
   ],
 };
 
@@ -98,7 +111,6 @@ function openPlaylist(index) {
 
 // Play selected song
 function playSong(index) {
-
   currentidx = index;
   audio.src = song[index];
   audio.play();
@@ -121,9 +133,9 @@ function updateCurrentDisplay(index) {
 }
 
 function updateActiveItem(index) {
-  document.querySelectorAll(".m1").forEach((item, i) => 
-    item.classList.toggle("playing", i === index)
-  );
+  document
+    .querySelectorAll(".m1")
+    .forEach((item, i) => item.classList.toggle("playing", i === index));
 }
 
 function setupAudioControls() {
