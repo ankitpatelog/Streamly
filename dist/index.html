@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #121212;
+        color: white;
+      }
+      
+      .main {
+        display: flex;
+        height: 100vh;
+      }
+      
+      .left {
+        width: 300px;
+        background-color: #181818;
+        padding: 20px;
+        overflow-y: auto;
+      }
+      
+      .content-1 {
+        margin-bottom: 30px;
+      }
+      
+      .box-1 {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+      
+      .logo {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+      }
+      
+      .name {
+        font-size: 18px;
+        font-weight: bold;
+      }
+      
+      .cont-1 {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+      
+      .cont-1:hover {
+        background-color: #282828;
+      }
+      
+      .cont-1.active {
+        background-color: #1db954;
+      }
+      
+      .cont-1 img, .cont-1 svg {
+        width: 24px;
+        height: 24px;
+        margin-right: 15px;
+      }
+      
+      .navigation {
+        list-style: none;
+        color: #b3b3b3;
+        font-size: 14px;
+      }
+      
+      .cont-1.active .navigation {
+        color: white;
+      }
+      
+      .musiclist {
+        max-height: 400px;
+        overflow-y: auto;
+      }
+      
+      .m1 {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 8px;
+        margin-bottom: 8px;
+        background-color: #282828;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+      
+      .m1:hover {
+        background-color: #3e3e3e;
+      }
+      
+      .m1.playing {
+        background-color: #1db954;
+      }
+      
+      .cont-m1 {
+        width: 50px;
+        height: 50px;
+        margin-right: 12px;
+      }
+      
+      .cont-m1 img {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+        object-fit: cover;
+      }
+      
+      .cont-m2 {
+        flex: 1;
+        font-size: 14px;
+        color: white;
+        margin-right: 50px;
+      }
+      
+      .cont-m3 {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+      }
+      
+      .favbtn {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 18px !important;
+        height: 18px !important;
+        cursor: pointer;
+        transition: all 0.3s;
+        z-index: 10;
+      }
+      
+      .favbtn:hover {
+        transform: scale(1.2);
+      }
+      
+      .playbtn {
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      
+      .playbtn:hover {
+        transform: scale(1.1);
+      }
+      
+      .mid {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+      }
+      
+      .cont-card {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+      }
+      
+      .cards {
+        background-color: #181818;
+        padding: 15px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      
+      .cards:hover {
+        background-color: #282828;
+      }
+      
+      .cover {
+        margin-bottom: 12px;
+      }
+      
+      .artist-src {
+        width: 100%;
+        height: 150px;
+        border-radius: 8px;
+        object-fit: cover;
+      }
+      
+      .song-info .artist {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      
+      .right {
+        width: 80px;
+        background-color: #181818;
+      }
+      
+      .playbar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 90px;
+        background-color: #181818;
+        border-top: 1px solid #282828;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        z-index: 1000;
+      }
+      
+      .section-1 {
+        width: 300px;
+        display: flex;
+        align-items: center;
+      }
+      
+      .current-song-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      
+      .section-2 {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      
+      .controller {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+      
+      .controller-1 {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      
+      .controller-1 img {
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      
+      .controller-1 img:hover {
+        transform: scale(1.1);
+      }
+      
+      .musicbar {
+        width: 100%;
+        max-width: 500px;
+      }
+      
+      .time-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+      }
+      
+      .line {
+        flex: 1;
+        height: 4px;
+        background-color: #404040;
+        border-radius: 2px;
+        position: relative;
+        cursor: pointer;
+      }
+      
+      .dot {
+        position: absolute;
+        top: -4px;
+        left: 0;
+        width: 12px;
+        height: 12px;
+        background-color: #1db954;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      .loading {
+        text-align: center;
+        color: #ccc;
+        padding: 50px;
+      }
+
+      .error {
+        text-align: center;
+        color: #ff6b6b;
+        padding: 50px;
+      }
+    </style>
+    <title>Streamly Music Player</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="left">
+        <div class="content-1">
+          <div class="box-1">
+            <div>
+              <svg class="logo" viewBox="0 0 24 24" fill="white">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </div>
+            <div class="name">STREAMLY</div>
+          </div>
+          <div class="box-2">
+            <div class="cont-1" onclick="showHome()">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+              </svg>
+              <li class="navigation">Home</li>
+            </div>
+
+            <div class="cont-1">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+              </svg>
+              <li class="navigation">Search</li>
+            </div>
+            <div class="cont-1">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                <path d="M6.03954 7.77203C3.57986 8.32856 2.35002 8.60682 2.05742 9.54773C1.76482 10.4886 2.60325 11.4691 4.2801 13.4299L4.71392 13.9372C5.19043 14.4944 5.42868 14.773 5.53586 15.1177C5.64305 15.4624 5.60703 15.8341 5.53498 16.5776L5.4694 17.2544C5.21588 19.8706 5.08912 21.1787 5.85515 21.7602C6.62118 22.3417 7.77268 21.8115 10.0757 20.7512L10.6715 20.4768C11.3259 20.1755 11.6531 20.0248 12 20.0248C12.3469 20.0248 12.6741 20.1755 13.3285 20.4768L13.9243 20.7512C16.2273 21.8115 17.3788 22.3417 18.1449 21.7602C18.9109 21.1787 18.7841 19.8706 18.5306 17.2544M19.7199 13.4299C21.3968 11.4691 22.2352 10.4886 21.9426 9.54773C21.65 8.60682 20.4201 8.32856 17.9605 7.77203L17.3241 7.62805C16.6251 7.4699 16.2757 7.39083 15.9951 7.17781C15.7144 6.96479 15.5345 6.64193 15.1745 5.99623L14.8468 5.40837C13.5802 3.13612 12.9469 2 12 2C11.0531 2 10.4198 3.13613 9.15316 5.40838" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <li class="navigation">Artist</li>
+            </div>
+            <div class="cont-1" onclick="showFavorites()">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.993 5.09691C11.0387 4.25883 9.78328 3.75 8.40796 3.75C5.42122 3.75 3 6.1497 3 9.10988C3 10.473 3.50639 11.7242 4.35199 12.67L12 20.25L19.4216 12.8944L19.641 12.6631C20.4866 11.7172 21 10.473 21 9.10988C21 6.1497 18.5788 3.75 15.592 3.75C14.2167 3.75 12.9613 4.25883 12.007 5.09692L12 5.08998L11.993 5.09691ZM12 7.09938L12.0549 7.14755L12.9079 6.30208L12.9968 6.22399C13.6868 5.61806 14.5932 5.25 15.592 5.25C17.763 5.25 19.5 6.99073 19.5 9.10988C19.5 10.0813 19.1385 10.9674 18.5363 11.6481L18.3492 11.8453L12 18.1381L5.44274 11.6391C4.85393 10.9658 4.5 10.0809 4.5 9.10988C4.5 6.99073 6.23699 5.25 8.40796 5.25C9.40675 5.25 10.3132 5.61806 11.0032 6.22398L11.0921 6.30203L11.9452 7.14752L12 7.09938Z"/>
+              </svg>
+              <li class="navigation">Favorites</li>
+            </div>
+          </div>
+        </div>
+        <div class="content-2">
+          <div class="musiclist"></div>
+        </div>
+      </div>
+
+      <div class="mid">
+        <div class="nav"></div>
+        <h3 id="main-heading">Trending Playlist</h3>
+        <div class="cont-card">
+          <div class="loading">Loading playlists...</div>
+        </div>
+      </div>
+
+      <div class="right"></div>
+      <div class="playbar">
+        <div class="section-1">
+          <div class="current-song-info">
+            <div class="song-cover">
+              <img id="current-cover" src="" alt="Song Cover" style="width: 50px; height: 50px; border-radius: 5px; display: none;">
+            </div>
+            <div class="song-details">
+              <div id="current-title" style="color: white; font-size: 14px; font-weight: bold;"></div>
+              <div id="current-artist" style="color: #ccc; font-size: 12px;"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="section-2">
+          <div class="controller">
+            <div class="controller-1">
+              <svg class="prevbtn" width="40" height="40" viewBox="0 0 24 24" fill="white" style="cursor: pointer">
+                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+              </svg>
+              <svg class="play123" width="40" height="40" viewBox="0 0 24 24" fill="white" style="cursor: pointer">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              <svg class="nextbtn" width="40" height="40" viewBox="0 0 24 24" fill="white" style="cursor: pointer">
+                <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+              </svg>
+            </div>
+
+            <div class="controller-2">
+              <div class="time-display" style="color: white; font-size: 14px; display: flex; align-items: center; gap: 10px;">
+                <span class="current-time">0:00</span>
+                <span style="color: #ccc;">/</span>
+                <span class="duration">0:00</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="musicbar">
+            <div class="time-container" style="display: flex; align-items: center; gap: 10px; width: 100%;">
+              <span class="current-time-small" style="color: #ccc; font-size: 12px; min-width: 35px;">0:00</span>
+              <div class="line" style="flex: 1; position: relative;">
+                <div class="dot"></div>
+              </div>
+              <span class="duration-small" style="color: #ccc; font-size: 12px; min-width: 35px;">0:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<script src="new.js"></script>
+  </body>
+</html>
