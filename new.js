@@ -36,17 +36,91 @@ const embeddedData = {
     },
     {
       index: "2",
-      name: "BlackPink",
-      artistcover: "songs/Blackpink/blackpink cover.jpg",
+      name: "Shubh",
+      artistcover: "songs/Shubh/1900x1900-000000-80-0-0.jpg",
       songs: [
         {
-          title: "How you like that- BlackPink",
-          artist: "BlackPink",
-          file: "songs/Blackpink/BLACKPINK - 'How You Like That' DANCE PERFORMANCE VIDEO - BLACKPINK.mp3",
-          cover: "songs/Blackpink/hylt cover.jpg",
+          title: "Supreme",
+          artist: "Shubh",
+          file: "songs/Shubh/Supreme - Shubh.mp3",
+          cover: "songs/Shubh/supremecover.jpeg",
+        },
+        {
+          title: "Balenci",
+          artist: "Shubh",
+          file: "songs/Shubh/Balenci - Shubh.mp3",
+          cover: "songs/Shubh/balencicover.jpg.webp"
+        },
+        {
+          title: "Together",
+          artist: "Shubh",
+          file: "songs/Shubh/Together - Shubh.mp3",
+          cover: "songs/Shubh/together-shubh.webp"
+        },
+        {
+          title: "Aura",
+          artist: "Shubh",
+          file: "songs/Shubh/Aura - Shubh.mp3",
+          cover: "songs/Shubh/sicario-shubh.webp"
+        }
+      ],
+    },
+    {
+      index: "3",
+      name: "Karan Aujla",
+      artistcover: "songs/karan/images.jpeg",
+      songs: [
+        {
+          title: "For A Reason",
+          artist: "Karan Aujla",
+          file: "songs/karan/For A Reason - Karan Aujla.mp3",
+          cover:  "songs/karan/artworks-0OCvUJsDq9W55CiU-c5pxiw-t500x500.jpg"
+        },
+        {
+          title: "Wavy",
+          artist: "Karan Aujla",
+          file: "songs/karan/Wavy - Karan Aujla.mp3",
+          cover:  "songs/karan/wavy-karan-aujla.webp"
+        },
+        {
+          title: "Courtide",
+          artist: "Karan Aujla",
+          file: "songs/karan/Courtside (Original) - Karan Aujla.mp3",
+          cover:  "songs/karan/courtside-(original)-karan-aujla.webp"
+        },
+        {
+          title: "Winning Speech",
+          artist: "Karan Aujla",
+          file: "songs/karan/Winning Speech - Karan Aujla.mp3",
+          cover:  "songs/karan/winning-speech-karan-aujla.webp"
         },
       ],
     },
+    {
+      index: "4",
+      name: "F1 The Album",
+      artistcover: "songs/F1 album/images (1).jpeg",
+      songs: [
+        {
+          title: "Just Keep Watching",
+          artist: "Tate McRae",
+          file: "songs/F1 album/Tate McRae - Just Keep Watching (From F1 The Movie) (Official Video).mp3",
+          cover:  "songs/F1 album/just keep watching.jpeg"
+        },
+        {
+          title: "Lose my mind",
+          artist: "Tate McRae",
+          file: "songs/F1 album/ll.mp3",
+          cover:  "songs/F1 album/lll.jpeg"
+        },
+        {
+          title: "Messy",
+          artist: "Rose-BlackPink",
+          file: "songs/F1 album/messy.mp3",
+          cover:  "songs/F1 album/rose.png"
+        }
+      ],
+    }
   ],
 };
 
@@ -56,7 +130,7 @@ let favorites = [];
 // Save favorites to in-memory storage
 function saveFavorites() {
   // Just keep in memory, no localStorage
-  console.log('Favorites saved:', favorites.length);
+  console.log("Favorites saved:", favorites.length);
 }
 
 // Initialize app
@@ -148,7 +222,6 @@ function displayPlaylists() {
   document.head.appendChild(style);
 }
 
-
 // Open selected playlist
 function openPlaylist(index) {
   currentPlaylist = index;
@@ -160,13 +233,17 @@ function openPlaylist(index) {
 
   playlist.songs.forEach((songItem, songIndex) => {
     song.push(songItem.file);
-    
+
     const songId = `${index}-${songIndex}`;
-    const isFav = favorites.some(fav => fav.id === songId);
+    const isFav = favorites.some((fav) => fav.id === songId);
 
     const wrapper = `
       <div class="m1" style="position: relative;">
-        <svg class="favbtn" data-song-id="${songId}" onclick="event.stopPropagation(); toggleFavoriteInPlaylist(${index}, ${songIndex})" width="18" height="18" viewBox="0 0 24 24" fill="${isFav ? '#ff6b6b' : 'none'}" stroke="${isFav ? '#ff6b6b' : '#fff'}" style="cursor:pointer; position: absolute; top: 5px; right: 5px; z-index: 10;">
+        <svg class="favbtn" data-song-id="${songId}" onclick="event.stopPropagation(); toggleFavoriteInPlaylist(${index}, ${songIndex})" width="18" height="18" viewBox="0 0 24 24" fill="${
+      isFav ? "#ff6b6b" : "none"
+    }" stroke="${
+      isFav ? "#ff6b6b" : "#fff"
+    }" style="cursor:pointer; position: absolute; top: 5px; right: 5px; z-index: 10;">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M11.993 5.09691C11.0387 4.25883 9.78328 3.75 8.40796 3.75C5.42122 3.75 3 6.1497 3 9.10988C3 10.473 3.50639 11.7242 4.35199 12.67L12 20.25L19.4216 12.8944L19.641 12.6631C20.4866 11.7172 21 10.473 21 9.10988C21 6.1497 18.5788 3.75 15.592 3.75C14.2167 3.75 12.9613 4.25883 12.007 5.09692L12 5.08998L11.993 5.09691Z"/>
         </svg>
         <div class="cont-m1">
@@ -326,8 +403,8 @@ function createSearchBar() {
   const searchInput = searchDiv.querySelector("#searchInput");
 
   // Make Search button toggle visibility
-  const searchButton = Array.from(document.querySelectorAll(".cont-1")).find(el =>
-    el.innerText.trim().toLowerCase() === "search"
+  const searchButton = Array.from(document.querySelectorAll(".cont-1")).find(
+    (el) => el.innerText.trim().toLowerCase() === "search"
   );
   if (searchButton) {
     searchButton.addEventListener("click", () => {
@@ -348,7 +425,9 @@ function createSearchBar() {
       return;
     }
 
-    document.getElementById("main-heading").textContent = `Search Results for "${query}"`;
+    document.getElementById(
+      "main-heading"
+    ).textContent = `Search Results for "${query}"`;
 
     const results = [];
     songdata.playlists.forEach((playlist, pIndex) => {
@@ -357,7 +436,11 @@ function createSearchBar() {
           songItem.title.toLowerCase().includes(query) ||
           songItem.artist.toLowerCase().includes(query)
         ) {
-          results.push({ ...songItem, playlistIndex: pIndex, songIndex: sIndex });
+          results.push({
+            ...songItem,
+            playlistIndex: pIndex,
+            songIndex: sIndex,
+          });
         }
       });
     });
@@ -372,10 +455,12 @@ function createSearchBar() {
     // Use professional card design for search results
     results.forEach((songItem) => {
       const songId = `${songItem.playlistIndex}-${songItem.songIndex}`;
-      const isFav = favorites.some(fav => fav.id === songId);
+      const isFav = favorites.some((fav) => fav.id === songId);
 
       container.innerHTML += `
-        <div class="artist-card" onclick="openPlaylist(${songItem.playlistIndex})">
+        <div class="artist-card" onclick="openPlaylist(${
+          songItem.playlistIndex
+        })">
           <div class="artist-cover">
             <img src="${songItem.cover}" alt="${songItem.title}">
           </div>
@@ -383,10 +468,14 @@ function createSearchBar() {
             <h4 class="artist-name">${songItem.title}</h4>
             <p class="artist-desc">${songItem.artist}</p>
           </div>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="${isFav ? '#ff6b6b' : 'none'}"
-            stroke="${isFav ? '#ff6b6b' : '#fff'}"
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="${
+            isFav ? "#ff6b6b" : "none"
+          }"
+            stroke="${isFav ? "#ff6b6b" : "#fff"}"
             style="cursor:pointer; position:absolute; top:10px; right:10px;"
-            onclick="event.stopPropagation(); toggleFavoriteInPlaylist(${songItem.playlistIndex}, ${songItem.songIndex})">
+            onclick="event.stopPropagation(); toggleFavoriteInPlaylist(${
+              songItem.playlistIndex
+            }, ${songItem.songIndex})">
             <path fill-rule="evenodd" clip-rule="evenodd" 
               d="M11.993 5.09691C11.0387 4.25883 9.78328 3.75 8.40796 3.75C5.42122 3.75 
                  3 6.1497 3 9.10988C3 10.473 3.50639 11.7242 4.35199 
@@ -465,27 +554,27 @@ function createSearchBar() {
   });
 }
 
-
-
 // 🎤 Artist Data (JSON-style)
 const artistData = [
   {
     name: "Sanju Rathod",
     cover: "songs/SanjuRathod/sanju cover.webp",
-    description: "Sanju Rathod is known for his vibrant regional music and soulful tracks.",
+    description:
+      "Sanju Rathod is known for his vibrant regional music and soulful tracks.",
   },
   {
     name: "BlackPink",
     cover: "songs/Blackpink/blackpink cover.jpg",
-    description: "BlackPink is a popular K-pop girl group blending EDM, pop, and hip-hop.",
+    description:
+      "BlackPink is a popular K-pop girl group blending EDM, pop, and hip-hop.",
   },
   {
     name: "Arijit Singh",
     cover: "songs/Arijit/arijit_cover.jpg",
-    description: "Arijit Singh is a renowned playback singer famous for emotional melodies.",
+    description:
+      "Arijit Singh is a renowned playback singer famous for emotional melodies.",
   },
 ];
-
 
 // 3️⃣ ARTIST BUTTON - Show artists from JSON data (Professional Card Grid Style)
 function showArtists() {
@@ -571,20 +660,17 @@ function showArtists() {
   document.head.appendChild(style);
 }
 
-
-
-
 function filterByArtist(artist) {
   document.getElementById("main-heading").textContent = `Songs by ${artist}`;
   const container = document.querySelector(".cont-card");
   container.innerHTML = "";
-  
+
   songdata.playlists.forEach((playlist, pIndex) => {
     if (playlist.name === artist) {
       playlist.songs.forEach((songItem, sIndex) => {
         const songId = `${pIndex}-${sIndex}`;
-        const isFav = favorites.some(fav => fav.id === songId);
-        
+        const isFav = favorites.some((fav) => fav.id === songId);
+
         container.innerHTML += `
           <div class="cards" onclick="openPlaylist(${pIndex})">
             <div class="cover"><img src="${songItem.cover}" alt="cover"></div>
@@ -592,8 +678,12 @@ function filterByArtist(artist) {
               <div style="font-weight:bold;">${songItem.title}</div>
               <div style="font-size:12px;color:#ccc;">${songItem.artist}</div>
             </div>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="${isFav ? '#ff6b6b' : 'none'}"
-                 stroke="${isFav ? '#ff6b6b' : '#fff'}" style="cursor:pointer;margin:6px"
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="${
+              isFav ? "#ff6b6b" : "none"
+            }"
+                 stroke="${
+                   isFav ? "#ff6b6b" : "#fff"
+                 }" style="cursor:pointer;margin:6px"
                  onclick="event.stopPropagation(); toggleFavoriteInPlaylist(${pIndex}, ${sIndex})">
               <path fill-rule="evenodd" clip-rule="evenodd" 
                     d="M11.993 5.09691C11.0387 4.25883 9.78328 3.75 8.40796 3.75C5.42122 3.75 
@@ -616,9 +706,9 @@ function toggleFavoriteInPlaylist(playlistIndex, songIndex) {
   const songId = `${playlistIndex}-${songIndex}`;
   const songItem = songdata.playlists[playlistIndex].songs[songIndex];
   const playlist = songdata.playlists[playlistIndex];
-  
+
   const index = favorites.findIndex((f) => f.id === songId);
-  
+
   if (index !== -1) {
     favorites.splice(index, 1);
   } else {
@@ -630,18 +720,18 @@ function toggleFavoriteInPlaylist(playlistIndex, songIndex) {
       artist: songItem.artist,
       file: songItem.file,
       cover: songItem.cover,
-      artistName: playlist.name
+      artistName: playlist.name,
     });
   }
-  
+
   saveFavorites();
-  
+
   // Update heart icon
   const heartIcon = document.querySelector(`[data-song-id="${songId}"]`);
   if (heartIcon) {
-    const isFav = favorites.some(fav => fav.id === songId);
-    heartIcon.setAttribute('fill', isFav ? '#ff6b6b' : 'none');
-    heartIcon.setAttribute('stroke', isFav ? '#ff6b6b' : '#fff');
+    const isFav = favorites.some((fav) => fav.id === songId);
+    heartIcon.setAttribute("fill", isFav ? "#ff6b6b" : "none");
+    heartIcon.setAttribute("stroke", isFav ? "#ff6b6b" : "#fff");
   }
 }
 
@@ -746,9 +836,8 @@ function showFavorites() {
   document.head.appendChild(style);
 }
 
-
 function playFavoriteSong(songId) {
-  const fav = favorites.find(f => f.id === songId);
+  const fav = favorites.find((f) => f.id === songId);
   if (fav) {
     openPlaylist(fav.playlistIndex);
     setTimeout(() => playSong(fav.songIndex), 100);
@@ -756,7 +845,7 @@ function playFavoriteSong(songId) {
 }
 
 function removeFavorite(songId) {
-  const index = favorites.findIndex(f => f.id === songId);
+  const index = favorites.findIndex((f) => f.id === songId);
   if (index !== -1) {
     favorites.splice(index, 1);
     saveFavorites();
